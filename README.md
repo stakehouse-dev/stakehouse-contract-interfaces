@@ -6,7 +6,7 @@ The Solidity NPM package for building Solidity smart contracts that interact wit
 
 In order to install the package, run the following command:
 ```
-npm i @blockswaplab/stakehouse-contracts
+npm i @blockswaplab/stakehouse-contract-interfaces
 ```
 
 Example usage:
@@ -14,7 +14,7 @@ Example usage:
 import { IDataStructures } from '@blockswaplab/stakehouse-contracts/contracts/interfaces/IDataStructures.sol';
 ```
 
-Any smart contract addresses can be found from our subgraph:
+Any smart contract addresses can be found here in this repo:
 ```
-https://thegraph.com/hosted-service/subgraph/bswap-eng/stakehouse-protocol
+https://github.com/stakehouse-dev/contract-deployments
 ```

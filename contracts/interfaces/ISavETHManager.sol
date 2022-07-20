@@ -22,61 +22,61 @@ interface ISavETHManager {
 
     /// @notice Allows an index owner or KNOT spender to transfer ownership of a KNOT to another index
     /// @param _stakeHouse Registry that the KNOT is part of
-    /// @param _memberId of the KNOT
+    /// @param _blsPublicKey of the KNOT
     /// @param _newIndexId ID of the index receiving the KNOT
     function transferKnotToAnotherIndex(
         address _stakeHouse,
-        bytes calldata _memberId,
+        bytes calldata _blsPublicKey,
         uint256 _newIndexId
     ) external;
 
     /// @notice Allows an index owner to approve a marketplace to transfer ownership of a KNOT from one index to another
     /// @param _stakeHouse Registry that the KNOT is part of
-    /// @param _memberId of the KNOT
+    /// @param _blsPublicKey of the KNOT
     /// @param _spender Account that can transfer the knot that is isolated within an index
     function approveSpendingOfKnotInIndex(
         address _stakeHouse,
-        bytes calldata _memberId,
+        bytes calldata _blsPublicKey,
         address _spender
     ) external;
 
     /// @notice Move a KNOT that is part of an index into the open index in order to get access to the savETH <> dETH
     /// @param _stakeHouse Registry that the KNOT is part of
-    /// @param _memberId of the KNOT
+    /// @param _blsPublicKey of the KNOT
     /// @param _recipient Address receiving savETH
     function addKnotToOpenIndex(
         address _stakeHouse,
-        bytes calldata _memberId,
+        bytes calldata _blsPublicKey,
         address _recipient
     ) external;
 
     /// @notice Given a KNOT that is part of the open index, allow a savETH holder to isolate the KNOT into their own index gaining exclusive rights to the network inflation rewards
     /// @param _stakeHouse Address of StakeHouse that the KNOT belongs to
-    /// @param _memberId KNOT ID within the StakeHouse
+    /// @param _blsPublicKey KNOT ID within the StakeHouse
     /// @param _targetIndexId ID of the index that the KNOT will be added to
     function isolateKnotFromOpenIndex(
         address _stakeHouse,
-        bytes calldata _memberId,
+        bytes calldata _blsPublicKey,
         uint256 _targetIndexId
     ) external;
 
     /// @notice In a single transaction, add knot to open index and withdraw dETH in registry
     /// @param _stakeHouse Address of StakeHouse that the KNOT belongs to
-    /// @param _memberId KNOT ID that belongs to an index
+    /// @param _blsPublicKey KNOT ID that belongs to an index
     /// @param _recipient Recipient of dETH tokens
     function addKnotToOpenIndexAndWithdraw(
         address _stakeHouse,
-        bytes calldata _memberId,
+        bytes calldata _blsPublicKey,
         address _recipient
     ) external;
 
     /// @notice In a single transaction, deposit dETH and isolate a knot into an index
     /// @param _stakeHouse Address of StakeHouse that the KNOT belongs to
-    /// @param _memberId KNOT ID that requires adding to an index
+    /// @param _blsPublicKey KNOT ID that requires adding to an index
     /// @param _indexId ID of the index that the KNOT is being added into
     function depositAndIsolateKnotIntoIndex(
         address _stakeHouse,
-        bytes calldata _memberId,
+        bytes calldata _blsPublicKey,
         uint256 _indexId
     ) external;
 
@@ -89,10 +89,10 @@ interface ISavETHManager {
     function deposit(address _recipient, uint128 _amount) external;
 
     /// @notice Total number of dETH rewards minted for knot from inflation rewards
-    function dETHRewardsMintedForKnot(bytes calldata _memberId) external view returns (uint256);
+    function dETHRewardsMintedForKnot(bytes calldata _blsPublicKey) external view returns (uint256);
 
     /// @notice Approved spender that can transfer ownership of a KNOT from one index to another (a marketplace for example)
-    function approvedKnotSpender(bytes calldata _memberId) external view returns (address);
+    function approvedKnotSpender(bytes calldata _blsPublicKey) external view returns (address);
 
     /// @notice Approved spender that can transfer ownership of an entire index (a marketplace for example)
     function approvedIndexSpender(uint256 _indexId) external view returns (address);
@@ -101,13 +101,13 @@ interface ISavETHManager {
     function indexIdToOwner(uint256 _indexId) external view returns (address);
 
     /// @notice Total dETH isolated for a knot associated with an index. Returns zero if knot is not part of an index
-    function knotDETHBalanceInIndex(uint256 _indexId, bytes calldata _memberId) external view returns (uint256);
+    function knotDETHBalanceInIndex(uint256 _indexId, bytes calldata _blsPublicKey) external view returns (uint256);
 
     /// @notice ID of KNOT associated index. Zero if part of open index or non zero if part of a user-owned index
-    function associatedIndexIdForKnot(bytes calldata _memberId) external view returns (uint256);
+    function associatedIndexIdForKnot(bytes calldata _blsPublicKey) external view returns (uint256);
 
     /// @notice Returns true if KNOT is part of the open index where they can spend their savETH. Otherwise they are part of a user owned index
-    function isKnotPartOfOpenIndex(bytes calldata _memberId) external view returns (bool);
+    function isKnotPartOfOpenIndex(bytes calldata _blsPublicKey) external view returns (bool);
 
     /// @notice Total number of dETH deposited into the open index that is not part of user owned indices
     function dETHUnderManagementInOpenIndex() external view returns (uint256);
