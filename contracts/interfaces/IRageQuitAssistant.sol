@@ -31,7 +31,7 @@ interface IRageQuitAssistant {
     function sETHTokenForLSDHouse() external view returns (address);
 
     /// @notice Whether the Stakehouse protocol account manager has paid the rage quit assistant unstaked ETH
-    function isFullWithdrawalExecuted external view returns (bool);
+    function isFullWithdrawalExecuted() external view returns (bool);
 
     /// @notice BLS public key of validator being rage quit
     function blsPublicKey() external view returns (bytes memory);
