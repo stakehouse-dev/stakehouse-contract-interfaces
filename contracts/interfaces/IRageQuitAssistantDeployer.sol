@@ -8,5 +8,5 @@ interface IRageQuitAssistantDeployer {
 
     /// @notice Deploy a new rage quit assistant on demand from this factory
     /// @param _feesAndMevPool Set this to address zero if the BLS key is a Stakehouse protocol validator. Otherwise if its a LSD validator set this as required.
-    function deployAssistant(address _feesAndMevPool, bytes calldata _blsPublicKey) external override returns (address);
+    function deployAssistant(address _feesAndMevPool, bytes calldata _blsPublicKey) external returns (address);
 }
