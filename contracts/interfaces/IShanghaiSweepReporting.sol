@@ -56,7 +56,7 @@ interface IShanghaiSweepReporting {
         IDataStructures.ShanghaiReport calldata _report,
         IDataStructures.EIP712Signature calldata _signature,
         IDataStructures.ETH2DataReport calldata _validatorState
-    ) public returns (uint256);
+    ) external returns (uint256);
 
     /// @notice If required, report multiple batches of sweeps post rage quit
     function batchReportSweepsPostRageQuit(
