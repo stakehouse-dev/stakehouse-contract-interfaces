@@ -1,0 +1,7 @@
+{
+  "name": "@blockswaplab/stakehouse-contract-interfaces",
+  "version": "1.0.18",
+  "description": "Solidity Interfaces NPM package for building on top of the Stakehouse Protocol",
+  "author": "Blockswap Labs",
+  "license": "BUSL-1.1"
+}
